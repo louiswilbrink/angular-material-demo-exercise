@@ -1,0 +1,156 @@
+<!--TOOLBAR-->
+<div ng-cloak>
+  <md-content>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings">
+          <md-icon md-svg-icon="bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg"></md-icon>
+        </md-button>
+        <h2>
+          <span>Rocky Mountain Angular App</span>
+        </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="More">
+          <md-menu md-position-mode="target-right target" >
+            <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+              <!--<md-icon md-menu-origin md-svg-icon="bower_components/material-design-icons/action/svg/production/ic_settings_24px.svg"></md-icon>-->
+              <md-icon md-svg-icon="bower_components/material-design-icons/social/svg/production/ic_person_24px.svg"></md-icon>
+            </md-button>
+            <md-menu-content width="4" >
+              <md-menu-item ng-repeat="item in [1, 2, 3]">
+                <md-button ng-click="announceClick($index)">
+                    <div layout="row">
+                      <p flex>Option {{item}}</p>
+                      <md-icon md-menu-align-target md-svg-icon="bower_components/material-design-icons/action/svg/production/ic_favorite_border_24px.svg" style="margin: auto 3px auto 0;"></md-icon>
+                    </div>
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </md-button>
+      </div>
+    </md-toolbar>
+  </md-content>
+</div>
+<div layout="column" ng-cloak>
+  <section layout="row" flex>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Recent Convo with Min Li</h1>
+      </md-toolbar>
+      <md-content layout-padding>
+        <md-list>
+          <md-subheader class="md-no-sticky">3 line item</md-subheader>
+          <md-list-item class="md-3-line" ng-repeat="item in todos">
+            <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+            <div class="md-list-item-text" layout="column">
+              <h3>{{ item.who }}</h3>
+              <h4>{{ item.what }}</h4>
+              <p>{{ item.notes }}</p>
+            </div>
+          </md-list-item>
+          <md-divider ></md-divider>
+          <md-subheader class="md-no-sticky">2 line item</md-subheader>
+          <md-list-item class="md-2-line">
+          <img ng-src="{{todos[0].face}}?20" class="md-avatar" alt="{{todos[0].who}}" />
+            <div class="md-list-item-text">
+              <h3>{{ todos[0].who }}</h3>
+              <p>Secondary text</p>
+            </div>
+          </md-list-item>
+          <md-divider ></md-divider>
+          <md-subheader class="md-no-sticky">3 line item, long paragraph (see on mobile)</md-subheader>
+          <md-list-item class="md-3-line">
+            <img ng-src="{{todos[0].face}}?25" class="md-avatar" alt="{{todos[0].who}}" />
+            <div class="md-list-item-text">
+              <h3>{{ todos[0].who }}</h3>
+              <p>Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam.</p>
+            </div>
+          </md-list-item>
+          <md-divider ></md-divider>
+          <md-subheader class="md-no-sticky">md-offset class</md-subheader>
+          <md-list-item class="md-2-line" ng-repeat="phone in phones">
+            <md-icon md-svg-icon="communication:phone" ng-if="$index === 0"></md-icon>
+            <div class="md-list-item-text" ng-class="{'md-offset': $index != 0 }">
+              <h3> {{ phone.number }} </h3>
+              <p> {{ phone.type }} </p>
+            </div>
+          </md-list-item>
+        </md-list>
+        <p hide-md show-gt-md>
+          This sidenav is locked open on your device. To go back to the default behavior,
+          narrow your display.
+        </p>
+      </md-content>
+    </md-sidenav>
+    <md-content ng-controller="BottomSheetExample" flex layout-padding>
+      <div layout="column" layout-fill layout-align="top center">
+          <md-grid-list class="gridListdemoBasicUsage"
+                md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
+                md-row-height-gt-md="1:1" md-row-height="2:2"
+                md-gutter="12px" md-gutter-gt-sm="8px" >
+            <md-grid-tile class="gray" ng-click="showGridBottomSheet($event)"
+                md-rowspan="3" md-colspan="2" md-colspan-sm="1">
+              <md-grid-tile-footer>
+                <h3>#1: (3r x 2c)</h3>
+              </md-grid-tile-footer>
+            </md-grid-tile>
+            <md-grid-tile class="green">
+              <md-grid-tile-footer>
+                <h3>#2: (1r x 1c)</h3>
+              </md-grid-tile-footer>
+            </md-grid-tile>
+            <md-grid-tile class="yellow">
+              <md-grid-tile-footer>
+                <h3>#3: (1r x 1c)</h3>
+              </md-grid-tile-footer>
+            </md-grid-tile>
+            <md-grid-tile class="blue"
+                md-rowspan="2">
+              <md-grid-tile-footer>
+                <h3>#4: (2r x 1c)</h3>
+              </md-grid-tile-footer>
+            </md-grid-tile>
+            <md-grid-tile class="red"
+                md-rowspan="2" md-colspan="2" md-colspan-sm="1">
+              <md-grid-tile-footer>
+                <h3>#5: (2r x 2c)</h3>
+              </md-grid-tile-footer>
+            </md-grid-tile>
+            <md-grid-tile class="green"
+                md-rowspan="2" >
+              <md-grid-tile-footer>
+                <h3>#6: (2r x 1c)</h3>
+              </md-grid-tile-footer>
+            </md-grid-tile>
+          </md-grid-list>
+      </div>
+      <div flex></div>
+    </md-content>
+  </section>
+  <div class="fab-button" ng-controller="DemoCtrl as demo" layout="column" ng-cloak>
+    <md-content style="background-color: rgba(255, 255, 255, 0);" class="md-padding" layout="column">
+      <div class="lock-size" layout="row" layout-align="center center">
+        <md-fab-speed-dial md-open="demo.isOpen" md-direction="{{demo.selectedDirection}}"
+                           ng-class="demo.selectedMode">
+          <md-fab-trigger>
+            <md-button aria-label="menu" class="md-fab md-warn">
+              <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg"></md-icon>
+            </md-button>
+          </md-fab-trigger>
+          <md-fab-actions>
+            <md-button ng-click="showCustomToast()" aria-label="Twitter" class="md-fab md-raised md-mini">
+              <md-icon  md-svg-src="images/twitter.svg" aria-label="Twitter"></md-icon>
+            </md-button>
+            <md-button ng-click="showCustomToast()" aria-label="Facebook" class="md-fab md-raised md-mini">
+              <md-icon md-svg-src="images/facebook.svg" aria-label="Facebook"></md-icon>
+            </md-button>
+            <md-button ng-click="showCustomToast()" aria-label="Instagram" class="md-fab md-raised md-mini">
+              <md-icon md-svg-src="images/instagram.svg" aria-label="Google Hangout"></md-icon>
+            </md-button>
+          </md-fab-actions>
+        </md-fab-speed-dial>
+      </div>
+    </md-content>
+  </div>
+</div>
